@@ -1,0 +1,14 @@
+<!-- app/views/handcrafted_items/new.html.erb -->
+<h2>Add Handcrafted Item</h2>
+
+<%= form_for [@artisan, @handcrafted_item], html: { multipart: true } do |f| %>
+  <%= render 'shared/error_messages', resource: @handcrafted_item %>
+
+  <!-- Your form fields go here -->
+
+  <div class="actions">
+    <%= f.submit 'Add Handcrafted Item', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', artisan_path(@artisan) %>
