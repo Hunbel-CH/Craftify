@@ -1,0 +1,16 @@
+<h2>Checkout</h2>
+
+<%= form_for @order, url: checkout_path do |f| %>
+
+  <div class="mb-3">
+    <%= form.label :shipping_address, class: 'form-label' %>
+    <%= form.text_field :shipping_address, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :payment_method, class: 'form-label' %>
+    <%= form.text_field :payment_method, class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Place Order', class: 'btn btn-primary' %>
+<% end %>

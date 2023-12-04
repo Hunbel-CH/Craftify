@@ -2,12 +2,14 @@ class ArtisansController < ApplicationController
   before_action :authenticate_user!
   before_action :set_artisan, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @artisans = User.where(role: :artisan)
   end
 
   def show
-    # Show artisan details and handcrafted items
+    @handcrafted_items = @artisan.handcrafted_items
+    @new_handcrafted_item = HandcraftedItem.new
   end
 
   def new
@@ -15,19 +17,19 @@ class ArtisansController < ApplicationController
   end
 
   def create
-    # Create artisan profile
+
   end
 
   def edit
-    # Edit artisan profile
+
   end
 
   def update
-    # Update artisan profile
+
   end
 
   def destroy
-    # Destroy artisan profile
+
   end
 
   private

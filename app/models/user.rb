@@ -1,7 +1,15 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  has_many :handcrafted_items
+  has_one :shopping_cart
+  has_many :orders
 
-  enum role: {buyer: 0, artisan: 1, admin: 2}
+  enum role: {
+  buyer: 'buyer',
+  artisan: 'artisan',
+  admin: 'admin'
+  }
+
 
   def set_default_role
     puts "Setting default role for user #{email}"

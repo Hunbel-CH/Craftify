@@ -1,0 +1,22 @@
+<h2>All Handcrafted Items</h2>
+
+<div class="row">
+  <% @handcrafted_items.each do |handcrafted_item| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <% if handcrafted_item.image.attached? %>
+          <%#= image_tag(handcrafted_item.image.url, class: 'card-img-top', alt: 'Handcrafted Item Image') %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= handcrafted_item.name %></h5>
+          <p class="card-text"><%= handcrafted_item.description %></p>
+          <div class="btn-group" role="group" aria-label="Item Actions">
+          <% if user_signed_in? && current_user.buyer? %>
+          <%= button_to 'Add to Cart', add_item_shopping_cart_path(handcrafted_item_id: handcrafted_item.id), class: 'btn btn-primary' %>
+        <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

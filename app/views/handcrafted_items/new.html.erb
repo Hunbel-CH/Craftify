@@ -1,14 +1,30 @@
-<!-- app/views/handcrafted_items/new.html.erb -->
 <h2>Add Handcrafted Item</h2>
 
-<%= form_for [@artisan, @handcrafted_item], html: { multipart: true } do |f| %>
-  <%= render 'shared/error_messages', resource: @handcrafted_item %>
+<%= form_for [current_user, @handcrafted_item], html: { multipart: true } do |f| %>
 
-  <!-- Your form fields go here -->
+  <div class="mb-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :description, class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-control', rows: 4 %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :price, class: 'form-label' %>
+    <%= f.number_field :price, class: 'form-control', step: '0.01' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
 
   <div class="actions">
     <%= f.submit 'Add Handcrafted Item', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
-<%= link_to 'Back', artisan_path(@artisan) %>
+<%= link_to 'Back', users_path(@artisan) %>

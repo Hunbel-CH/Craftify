@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    # @products = Product.all # Fetch your products here
+    @handcrafted_items = HandcraftedItem.all
   end
 end

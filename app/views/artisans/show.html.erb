@@ -1,12 +1,7 @@
-<!-- app/views/artisans/show.html.erb -->
-<h2><%= @artisan.name %>'s Profile</h2>
-
-<!-- Show artisan details -->
-
-<%= link_to 'Add Handcrafted Item', new_artisan_handcrafted_item_path(@artisan), class: 'btn btn-primary' %>
-
-<!-- Show handcrafted items if any -->
-
-<%= render @artisan.handcrafted_items %>
-
-<%= link_to 'Back', artisans_path %>
+<h2>Handcrafted Items</h2>
+<ul>
+  <% @handcrafted_items&.each do |handcrafted_item| %>
+    <li><%= handcrafted_item.name %></li>
+    <!-- Add other fields as needed -->
+  <% end %>
+</ul>

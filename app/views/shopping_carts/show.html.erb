@@ -1,0 +1,36 @@
+<h2>Your Shopping Cart</h2>
+
+<% if @cart_items.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= link_to cart_item.handcrafted_item.name, user_handcrafted_item_path(current_user, cart_item.handcrafted_item) %>
+          </td>
+          <td><%= cart_item.quantity %></td>
+          <td><%= number_to_currency(cart_item.handcrafted_item.price) %></td>
+          <td><%= number_to_currency(cart_item.total_price) %></td>
+          <td>
+            <%= button_to 'Remove', remove_item_shopping_cart_path(cart_item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>Total: <%= number_to_currency(@cart_items.sum(&:total_price)) %></p>
+
+  <%= link_to 'Checkout', new_order_path, class: 'btn btn-primary' %>
+<% else %>
+  <p>Your shopping cart is empty.</p>
+<% end %>

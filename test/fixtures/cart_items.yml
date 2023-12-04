@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  handcrafted_item: one
+  shopping_cart: one
+  quantity: 1
+
+two:
+  handcrafted_item: two
+  shopping_cart: two
+  quantity: 1

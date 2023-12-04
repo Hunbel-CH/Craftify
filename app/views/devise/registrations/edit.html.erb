@@ -12,7 +12,7 @@
     <!-- Role Selection Dropdown -->
     <div class="mb-3">
       <%= f.label :role, class: "form-label" %>
-      <%= f.select :role, User.roles.keys.map { |role| [role.humanize, role] }, {}, class: 'form-control' %>
+      <%= f.select :role, User.roles.reject { |role| role == 'admin' }.keys.map { |role| [role.humanize, role]}, {}, class: 'form-control' %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

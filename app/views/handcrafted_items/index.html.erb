@@ -1,0 +1,30 @@
+<h2>Handcrafted Items</h2>
+
+<div class="row">
+  <% @handcrafted_items&.each do |handcrafted_item| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <% if handcrafted_item.image.attached? %>
+          <%#= image_tag(handcrafted_item.image.url, class: 'card-img-top', alt: 'Handcrafted Item Image') %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= handcrafted_item.name %></h5>
+          <p class="card-text"><%= handcrafted_item.description %></p>
+          <div class="btn-group" role="group" aria-label="Item Actions">
+            <% if user_signed_in? && current_user.buyer? %>
+              <%= link_to 'Add to Cart', user_handcrafted_item_path(current_user, handcrafted_item), class: 'btn btn-primary' %>
+            <% end %>
+            <% if user_signed_in? && current_user.artisan? && current_user == handcrafted_item.user %>
+              <%= link_to 'Edit', edit_user_handcrafted_item_path(current_user, handcrafted_item), class: 'btn btn-secondary' %>
+              <%= button_to 'Delete', user_handcrafted_item_path(current_user, handcrafted_item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? && current_user.artisan? %>
+  <%= link_to 'Add Handcrafted Item', new_user_handcrafted_item_path, class: 'btn btn-success mt-4' %>
+<% end %>

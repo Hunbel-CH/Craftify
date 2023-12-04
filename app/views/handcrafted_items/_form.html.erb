@@ -1,5 +1,29 @@
-<%= form_for [@artisan, @handcrafted_item] do |f| %>
-  <!-- Add form fields for handcrafted item details here -->
 
-  <%= f.submit 'Save' %>
+<%= form_for [current_user, @handcrafted_item], html: { multipart: true } do |f| %>
+
+  <div class="mb-3">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :description, class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-control', rows: 4 %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :price, class: 'form-label' %>
+    <%= f.number_field :price, class: 'form-control', step: '0.01' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :image, class: 'form-label' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+  </div>
 <% end %>
+
+<%= link_to 'Cancel', user_handcrafted_item_path(current_user, @handcrafted_item), class: 'btn btn-secondary' %>

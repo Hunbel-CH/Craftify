@@ -1,7 +1,7 @@
-<h1>Artisans</h1>
-
+<h2>Handcrafted Items</h2>
 <ul>
-  <% @artisans.each do |artisan| %>
-    <li><%= link_to artisan.name, artisan_path(artisan) %></li>
+  <% @handcrafted_items&.each do |handcrafted_item| %>
+    <li><%= handcrafted_item.name %></li>
+    <!-- Add other fields as needed -->
   <% end %>
 </ul>
